@@ -10,22 +10,23 @@ const notes = [{
   body: 'Get a new seat'
 
 }];
+// //Query and remove. Query finds the first instance. 
+// // const p =document.querySelector('p');
+// // p.remove();
+
+// const ps = document.querySelectorAll('p');
+// ps.forEach((p) => {
+//   p.textContent = '********';
+//   // console.log(p.textContent);
+//   //p.remove();
+// });
 
 
+// const newParagraph = document.createElement('p');
+// newParagraph.textContent = 'This is a new element from Javascript';
+// document.querySelector('body').appendChild(newParagraph);
 
 
-//Query and remove. Query finds the first instance. 
-// const p =document.querySelector('p');
-// p.remove();
-
-const ps = document.querySelectorAll('p');
-ps.forEach((p) => {
-  p.textContent = '********';
-  // console.log(p.textContent);
-  //p.remove();
+document.querySelector('button').addEventListener('click' , (e) => {
+  e.target.textContent = 'Button was Clicked.';
 });
-
-
-const newParagraph = document.createElement('p');
-newParagraph.textContent = 'This is a new element from Javascript';
-document.querySelector('body').appendChild(newParagraph);

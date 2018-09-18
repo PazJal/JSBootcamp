@@ -37,3 +37,7 @@ todos.forEach((todo) => {
   document.querySelector('body').appendChild(todoParagraph);
 });
 
+
+document.querySelector('button').addEventListener('click' , () =>{
+  console.log('Adding a Todo');
+});
