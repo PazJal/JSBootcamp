@@ -5,7 +5,15 @@
   </head>
   <body>
     <h1>Todos:</h1>
-    <button>Add Todo</button>
+    <input type="text" id="search-text" placeholder="Filter">
+    <label>
+      <input id="hide-completed" type="checkbox"> Hide completed todos
+    </label>
+    <div id="todos"></div>
+    <form id="newTodo">
+      <input type="text" name="todoToAdd" placeholder="Enter todo text">
+      <button>Submit</button> 
+    </form>
     <script src="todo-app.js"></script>
   </body>
 </html>

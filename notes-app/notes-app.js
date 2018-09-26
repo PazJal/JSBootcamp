@@ -27,6 +27,37 @@ const notes = [{
 // document.querySelector('body').appendChild(newParagraph);
 
 
-document.querySelector('button').addEventListener('click' , (e) => {
+const filters = {
+  searchText: ''
+}
+
+const renderNotes = function (notes , filters) {
+  const filteredNotes = notes.filter((note) => {
+    
+    return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
+  });
+
+  document.querySelector('#notes').innerHTML = '';
+  filteredNotes.forEach((note) => {
+    const noteElement = document.createElement('p');
+    noteElement.textContent = note.title;
+    document.querySelector('#notes').appendChild(noteElement);
+  });
+}
+
+renderNotes(notes,filters);
+
+document.querySelector('#create-note-button').addEventListener('click' , (e) => {
   e.target.textContent = 'Button was Clicked.';
+});
+
+
+
+document.querySelector('#text-search').addEventListener('input' , (e) => {
+  filters.searchText = e.target.value;
+  renderNotes(notes , filters);
+});
+
+document.querySelector('#filter-by').addEventListener('change' , (e) => {
+  console.log(e.target.value);
 });
