@@ -8,4 +8,4 @@ let city = 'Haifa';
 let country = 'Israel';
 let location = city + ', ' + country;
 
-console.log(location);
+console.log(location); 

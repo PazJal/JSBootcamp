@@ -1,0 +1,1 @@
+replcaed_lyrics = [x if x != wordToReplace else replacingWord for x in orginialLyrics]
