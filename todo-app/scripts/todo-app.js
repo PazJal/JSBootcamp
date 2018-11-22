@@ -23,22 +23,25 @@ document.querySelector('#newTodo').addEventListener('submit' , (e) => {
   e.preventDefault();
   
   //Generate new todo:
-  let todoText = e.target.elements.todoToAdd.value;
-  let newTodo = {
-    id: uuidv4(),
-    text: todoText,
-    completed: false
+  let todoText = e.target.elements.todoToAdd.value.trim();
+  if (todoText !== ''){
+    let newTodo = {
+      id: uuidv4(),
+      text: todoText,
+      completed: false
+    }
+  
+    todos.push(newTodo);
+  
+    const todosString = JSON.stringify(todos);
+  
+    saveTodos(todosString);
+  
+    renderTodos(todos , filters);
+  
+    e.target.elements.todoToAdd.value = '';
   }
-
-  todos.push(newTodo);
-
-  const todosString = JSON.stringify(todos);
-
-  saveTodos(todosString);
-
-  renderTodos(todos , filters);
-
-  e.target.elements.todoToAdd.value = '';
+  
 
 });
 

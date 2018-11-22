@@ -34,7 +34,8 @@ const toggleTodo = (id) => {
 //Generate a DOM element for a single todo
 const generateTodoDOM = (todo) => {
   //Setup Div
-  const todoDiv = document.createElement('div');
+  const todoDiv = document.createElement('label');
+  const containerEl = document.createElement('div');
 
   //Setup checkbox element 
   const todoCheckbox = document.createElement('input');
@@ -53,9 +54,14 @@ const generateTodoDOM = (todo) => {
   const todoSpan = document.createElement('span');
   todoSpan.textContent = todo.text;
 
+  todoDiv.classList.add('list-item');
+  containerEl.classList.add('list-item__container');
+  todoDiv.appendChild(containerEl);
+
   //Setup button element
   const todoButton = document.createElement('button');
-  todoButton.textContent = 'x';
+  todoButton.classList.add('button' , 'button--text');
+  todoButton.textContent = 'remove';
   todoButton.addEventListener('click' , () => {
     //Remove todo
     removeTodo(todo.id);
@@ -65,18 +71,18 @@ const generateTodoDOM = (todo) => {
     renderTodos(todos , filters);
   });
 
-  todoDiv.appendChild(todoCheckbox);
-  todoDiv.appendChild(todoSpan);
+  containerEl.appendChild(todoCheckbox);
+  containerEl.appendChild(todoSpan);
   todoDiv.appendChild(todoButton);
 
-  // const todoParagraph = document.createElement('p');
-  // todoParagraph.textContent = todo.text;
+ 
   return todoDiv;
 }
 
 const generateSummaryDOM = (todosToComplete) => {
   const firstParagraph = document.createElement('h2');
-  firstParagraph.textContent = `You have ${todosToComplete} todos left.`;
+  firstParagraph.classList.add('list-title');
+  firstParagraph.textContent = todosToComplete === 1 ? `You have ${todosToComplete} todo left.` : `You have ${todosToComplete} todos left.` ;
   return firstParagraph;
 }
 
@@ -94,11 +100,19 @@ const renderTodos = (todos, filters) => {
   document.querySelector('#todos').innerHTML = '';
   
   document.querySelector('#todos').appendChild(generateSummaryDOM(todosToComplete));
- 
-  filteredTodos.forEach((todo) => {
-    
-    document.querySelector('#todos').appendChild(generateTodoDOM(todo));
-  });
+  
+  if (filteredTodos.length === 0){
+    const emptyMsg = document.createElement('p');
+    emptyMsg.classList.add('empty-message');
+    emptyMsg.textContent = 'No soup for you!';
+    document.querySelector('#todos').appendChild(emptyMsg);
+  } else {
+    filteredTodos.forEach((todo) => {
+      document.querySelector('#todos').appendChild(generateTodoDOM(todo));
+    });
+  }
+
+  
 
 
 }
