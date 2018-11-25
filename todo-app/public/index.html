@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <h1 class="header__title">Todo</h1>
+        <h2 class="header__subtitle">What do you need todo?</h2>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="actions__container">
+        <input type="text" id="search-text" class="input" placeholder="Filter">
+        <label class="checkbox">
+          <input id="hide-completed" type="checkbox"> Hide completed todos
+        </label>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="todos"></div>
+      <form id="newTodo">
+        <input type="text" name="todoToAdd" class="input" placeholder="Enter todo text">
+        <button class="button">Submit</button> 
+      </form>
+    </div>
+
+    
+    <script src="scripts/bundle.js"></script>
+  </body>
+</html>
